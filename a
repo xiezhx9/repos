@@ -1,2 +1,22 @@
+-------------------------------------------------------------------------------
+Test set: org.apache.bookkeeper.client.TestSpeculativeRead
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 4.208 s <<< FAILURE! -- in org.apache.bookkeeper.client.TestSpeculativeRead
+org.apache.bookkeeper.client.TestSpeculativeRead.testSequenceReadLocalEnsemble -- Time elapsed: 4.208 s <<< ERROR!
+java.lang.RuntimeException: 
 java.net.UnknownHostException: Trying to listen on loopback address, 127.0.1.1:3181 but this is forbidden by default (see ServerConfiguration#getAllowLoopback()).
 If this happen, you can consider specifying the network interface to listen on (e.g. listeningInterface=eth0) or specifying the advertised address (e.g. advertisedAddress=172.x.y.z)
+	at org.apache.bookkeeper.bookie.LocalBookieEnsemblePlacementPolicy.initialize(LocalBookieEnsemblePlacementPolicy.java:68)
+	at org.apache.bookkeeper.client.BookKeeper.initializeEnsemblePlacementPolicy(BookKeeper.java:579)
+	at org.apache.bookkeeper.client.BookKeeper.<init>(BookKeeper.java:503)
+	at org.apache.bookkeeper.client.BookKeeperTestClient.<init>(BookKeeperTestClient.java:48)
+	at org.apache.bookkeeper.client.TestSpeculativeRead.testSequenceReadLocalEnsemble(TestSpeculativeRead.java:396)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.net.UnknownHostException: Trying to listen on loopback address, 127.0.1.1:3181 but this is forbidden by default (see ServerConfiguration#getAllowLoopback()).
+If this happen, you can consider specifying the network interface to listen on (e.g. listeningInterface=eth0) or specifying the advertised address (e.g. advertisedAddress=172.x.y.z)
+	at org.apache.bookkeeper.bookie.BookieImpl.getBookieAddress(BookieImpl.java:295)
+	at org.apache.bookkeeper.bookie.BookieImpl.getBookieId(BookieImpl.java:250)
+	at org.apache.bookkeeper.bookie.LocalBookieEnsemblePlacementPolicy.initialize(LocalBookieEnsemblePlacementPolicy.java:65)
+	... 7 more
